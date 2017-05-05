@@ -10,6 +10,10 @@ bootstrap/cache/
 .env.*.php
 .env.php
 .env
+/public/css
+/public/img
+/public/js
+/resources/assets/bowers
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/

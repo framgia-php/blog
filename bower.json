@@ -1,0 +1,10 @@
+{
+  "name": "frm.blog.dev",
+  "description": "Framgia blog",
+  "main": "bower.json",
+  "authors": [
+    "Nguyen Xuan Quynh <nguyenxuanquynh2210vghy@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/xuanquynh/training_blog_4"
+}
