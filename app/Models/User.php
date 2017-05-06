@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Entrust\UserEntrust;
 use App\Models\Relations\UserRelations;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, UserRelations;
+    use Notifiable, SoftDeletes, UserEntrust, UserRelations;
 
     /**
      * The attributes that are mass assignable.
