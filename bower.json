@@ -6,5 +6,10 @@
     "Nguyen Xuan Quynh <nguyenxuanquynh2210vghy@gmail.com>"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/xuanquynh/training_blog_4"
+  "homepage": "https://github.com/xuanquynh/training_blog_4",
+  "dependencies": {
+    "AdminLTE-2.3.11": "adminlte#2.3.11",
+    "font-awesome-4.5.0": "font-awesome#4.5.0",
+    "Ionicons-2.0.1": "ionicons#2.0.1"
+  }
 }
