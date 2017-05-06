@@ -2,6 +2,8 @@
 
 namespace App\Models\Relations;
 
+use App\Models\Role;
+
 trait PermissionRelations
 {
     /**

@@ -7,6 +7,8 @@ use App\Models\Relations\PermissionRelations;
 
 class Permission extends Model
 {
+    use PermissionRelations;
+    
     /**
      * The attributes that are mass assignable.
      *
