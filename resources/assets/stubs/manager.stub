@@ -1,0 +1,11 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Contracts\Managers\Manager as BaseManager;
+use App\Contracts\Managers\ResourceManager as ResourceManager;
+
+DummyType DummyElement extends Manager implements BaseManager, ResourceManager
+{
+    //
+}

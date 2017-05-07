@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        \App\Console\Commands\FileGenerateCommand::class,
+        \App\Console\Commands\MakeManagerCommand::class,
+        \App\Console\Commands\MakeRepositoryCommand::class,
     ];
 
     /**

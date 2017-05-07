@@ -1,0 +1,20 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Repositories\EloquentRepository;
+use App\Contracts\Repositories\Repository as BaseRepository;
+use App\Contracts\Repositories\EntityRepository as ResourcesRepository;
+
+DummyType DummyElement extends EloquentRepository implements BaseRepository, ResourcesRepository
+{
+    /**
+     * Get model class name is matched with repository.
+     *
+     * @return string
+     */
+    public function getModelClassName()
+    {
+        // return Model::class;
+    }
+}
