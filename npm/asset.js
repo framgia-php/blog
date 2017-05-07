@@ -23,6 +23,14 @@ module.exports = {
             sources.push(path);
         }
 
+        for (var i in asset[type].owners) {
+            var path = asset[type].owners[i];
+
+            path = asset[type].ownerPath + '/' + path;
+
+            sources.push(path);
+        }
+
         return sources;
     },
 

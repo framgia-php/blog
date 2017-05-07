@@ -9,7 +9,12 @@
   "homepage": "https://github.com/xuanquynh/training_blog_4",
   "dependencies": {
     "AdminLTE-2.3.11": "adminlte#2.3.11",
+    "bootstrap-3.3.7": "bootstrap#3.3.7",
     "font-awesome-4.5.0": "font-awesome#4.5.0",
-    "Ionicons-2.0.1": "ionicons#2.0.1"
+    "font-awesome-4.6.0": "font-awesome#4.6.0",
+    "Ionicons-2.0.1": "ionicons#2.0.1",
+    "select2-4.0.3": "select2#4.0.3",
+    "jquery-3.2.1": "jquery#3.2.1",
+    "jquery": "^3.2.1"
   }
 }
