@@ -1,21 +1,26 @@
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                © 2017 Framgia Inc. All rights reserved.
-            </div>
+<footer id="footer" class="footer">
+    <div class="text-center">
+        <ul class="list-inline social-networks">
+            <li class="social-network">
+                <a href="#" class="facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
 
-            <div class="col-md-6">
-                <div class="text-right">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#" class="socail-link socail-link-facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+            <li class="social-network">
+                <a href="#" class="google-plus">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </li>
+
+            <li class="social-network">
+                <a href="#" class="github">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+        </ul>
+
+        <p>© Maxim Theme. All rights reserved.</p>
+        <p>Free Bootstrap Themes by BootstrapMade.com</p>
     </div>
 </footer>

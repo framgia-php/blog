@@ -18,6 +18,7 @@ bootstrap/cache/
 /public/png
 /public/mix-manifest.json
 /resources/assets/bowers
+/resources/assets/css/*_scss.*
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/

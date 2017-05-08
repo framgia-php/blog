@@ -40,6 +40,7 @@ module.exports = {
      */
     styles: {
         basePath: '..',
+        publicPath: '../../../public/css',
         bowers: [
             'AdminLTE-2.3.11/bootstrap/css/bootstrap.min.css',
             'font-awesome-4.5.0/css/font-awesome.min.css',
@@ -49,6 +50,9 @@ module.exports = {
         ],
         owners: [
             //
+        ],
+        public: [
+            'admin.styles.css'
         ],
         destination: 'public/css/admin.min.css'
     },
@@ -70,5 +74,18 @@ module.exports = {
             //
         ],
         destination: 'public/js/admin.min.js'
+    },
+
+    /**
+     * Sass configuration.
+     */
+    sass: {
+        basePath: '..',
+        ownerPath: '../admin/sass',
+        bowers: [],
+        owners: [
+            'styles.scss'
+        ],
+        destination: 'public/css/admin.style.css'
     }
 };

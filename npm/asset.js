@@ -9,26 +9,42 @@ module.exports = {
         return this;
     },
 
+    resolveSourcesByResource (asset, type) {
+
+    },
+
     /**
      * Resolve all paths of sources by asset and type ('style', 'scripts', ...)
      */
     resolveSources (asset, type) {
         var sources = [];
 
-        for (var i = 0; i < asset[type].bowers.length; i++) {
-            var path = asset[type].bowers[i];
+        if (asset[type].bowers !== undefined) {
+            for (var i in asset[type].bowers) {
+                var path = asset[type].bowers[i];
 
-            path = asset[type].basePath + '/bowers/' + path;
+                path = asset[type].basePath + '/bowers/' + path;
 
-            sources.push(path);
+                sources.push(path);
+            }
         }
 
-        for (var i in asset[type].owners) {
-            var path = asset[type].owners[i];
+        if (asset[type].owners !== undefined) {
+            for (var i in asset[type].owners) {
+                var path = asset[type].owners[i];
 
-            path = asset[type].ownerPath + '/' + path;
+                path = asset[type].ownerPath + '/' + path;
 
-            sources.push(path);
+                sources.push(path);
+            }
+        }
+
+        if (asset[type].public !== undefined) {
+            for (var i in asset[type].public) {
+                var path = asset[type].publicPath + '/' + asset[type].public[i];
+
+                sources.push(path);
+            }
         }
 
         return sources;
@@ -38,16 +54,16 @@ module.exports = {
      * Compile asset.
      */
     compileAsset (asset, type) {
+        // return console.log(asset[type]);
+        var sources = this.resolveSources(asset, type);
+        var destination = asset[type].destination;
+
         if (type === 'styles') {
-            this.mix.styles(
-                this.resolveSources(asset, type),
-                asset[type].destination
-            );
+            this.mix.styles(sources, destination);
         } else if (type === 'scripts') {
-            this.mix.scripts(
-                this.resolveSources(asset, type),
-                asset[type].destination
-            )
+            this.mix.scripts(sources, destination);
+        } else if (type === 'sass') {
+            this.mix.sass(sources, destination);
         }
 
         return this;
@@ -102,6 +118,13 @@ module.exports = {
      */
     compileScripts (asset) {
         return this.compileAsset(asset, 'scripts');
+    },
+
+    /**
+     * Compile all sass files of asset.
+     */
+    compileSass (asset) {
+        return this.compileAsset(asset, 'sass');
     },
 
     /**
