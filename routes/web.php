@@ -26,7 +26,11 @@ Route::group([
     'namespace' => 'Admin',
     'middleware' => ['auth:web', 'admin:web'],
 ], function () {
-    Route::get('/', function () {})->name('dashboard.index');
+    Route::get('/', function () {
+        return view('admin.dashboard.index');
+    })->name('dashboard.index');
+
+    Route::resource('roles', 'RolesController', ['except' => 'show']);
 });
 
 Route::group(['as' => 'sites.', 'namespace' => 'Sites'], function () {

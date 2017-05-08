@@ -5,6 +5,27 @@ namespace App\Models\Accessors;
 trait UserAccessors
 {
     /**
+     * Types of user that can access admin pages.
+     *
+     * @var array
+     */
+    protected $accessAdminPagesTypes = [
+        'super-user',
+        'super-admin',
+        'admin',
+    ];
+
+    /**
+     * Determine whether user can access admin pages.
+     *
+     * @return bool
+     */
+    public function canAccessAdminPages()
+    {
+        return in_array($this->type, $this->accessAdminPagesTypes);
+    }
+
+    /**
      * Determine whether user is super admin.
      *
      * @return bool
@@ -31,7 +52,7 @@ trait UserAccessors
      */
     public function getIsMemberAttribute()
     {
-        return ! ($this->is_super_admin || $this->is_admin);
+        return $this->isType('member');
     }
 
     /**
