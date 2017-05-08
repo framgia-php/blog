@@ -178,6 +178,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\EntrustServiceProvider::class,
+        App\Providers\ManagersServiceProvider::class,
+        App\Providers\RepositoriesServiceProvider::class,
 
     ],
 

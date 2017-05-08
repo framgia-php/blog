@@ -2,38 +2,54 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use App\Contracts\Managers\AuthManager;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
     /**
-     * Where to redirect users after login.
+     * Show the login form.
      *
-     * @var string
+     * @return \Illuminate\View\View
      */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index()
     {
-        $this->middleware('guest')->except('logout');
+        return view('auth.login');
+    }
+
+    /**
+     * Handle login incoming request.
+     *
+     * @param  \App\Contracts\Managers\AuthManager  $manager
+     * @param  \Illuminate\Http\RedirectResponse
+     */
+    public function handle(AuthManager $manager, LoginRequest $request)
+    {
+        if ($manager->authenticate($request)) {
+            return redirect()->route('sites.home.index')->with([
+                'status' => 'success',
+                'message' => trans('message.success.authenticated'),
+            ]);
+        }
+
+        return back()->with([
+            'status' => 'failure',
+            'error' => trans('message.failure.unauthenticated'),
+        ]);
+    }
+
+    /**
+     * Handle logout request.
+     *
+     * @param  \App\Contracts\Managers\AuthManager  $manager
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function logout(AuthManager $manager, Request $request)
+    {
+        $manager->logout($request);
+
+        return redirect()->route('sites.home.index');
     }
 }

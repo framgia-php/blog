@@ -8,48 +8,59 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            Please sign in
+                            {{ trans('view.please_signin') }}
                         </h3>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="index.html" method="post">
-                            <div class="form-group">
-                                <label for="" class="col-md-4 control-label">Email</label>
+                        {{ Form::open(['route' => 'auth.login.handle', 'class' => 'form-horizontal']) }}
+                            <div class="form-group {{ $errors->has('email') || session()->has('error') ? 'has-error' : '' }}">
+                                <label class="col-md-4 control-label">Email</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" id="" placeholder="">
-                                    <p class="help-block">Help text here.</p>
+                                    {{ Form::text('email', null, [
+                                        'id' => 'email',
+                                        'placeholder' => trans('view.placeholder.email'),
+                                        'class' => 'form-control',
+                                    ]) }}
+                                    <span class="help-block">{{ $errors->first('email') }}</span>
+                                    <span class="help-block">{{ session('error') }}</span>
+                                </div>
+                            </div>
+                            <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+                                <label for="password" class="col-md-4 control-label">Password</label>
+                                <div class="col-md-6">
+                                    {{ Form::password('password', [
+                                        'id' => 'password',
+                                        'placeholder' => trans('view.placeholder.password'),
+                                        'class' => 'form-control',
+                                    ]) }}
+                                    <span class="help-block">{{ $errors->first('password') }}</span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="" class="col-md-4 control-label">Password</label>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" id="" placeholder="">
-                                    <p class="help-block">Help text here.</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="col-md-4 control-label"></label>
-                                <div class="col-md-3">
+                                <div class="col-md-3 col-md-offset-4">
                                     <div class="checkbox">
-                                        <label><input type="checkbox" value="">Remember me</label>
+                                        <label for="remember">
+                                            {{ Form::checkbox('remember', 1, false, ['id' => 'remember']) }}
+                                            {{ trans('view.remember_me') }}
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <a href="#" class="btn btn-info btn-link">Forgot your password?</a>
+                                    <a href="#" class="btn btn-info btn-link">
+                                        {{ trans('view.forgot_password') }} ?
+                                    </a>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <input type="submit" name="" value="Login" class="btn btn-info">
-                                    <input type="reset" name="" value="Cancel" class="btn btn-default">
+                                    {{ Form::submit(trans('view.login'), ['class' => 'btn btn-info']) }}
                                 </div>
                             </div>
-                        </form>
+                        {{ Form::close() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- /.login-container -->
 @endsection

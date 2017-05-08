@@ -11,4 +11,13 @@ return [
     'copyright' => 'Copyright',
     'all_rights_reserved' => 'All rights reserved.',
     'version_number' => '1.0',
+    'login' => 'Login',
+    'please_signin' => 'Please Sign In',
+    'remember_me' => 'Rememeber me',
+    'forgot_password' => 'Forgot password',
+
+    'placeholder' => [
+        'email' => 'Email',
+        'password' => 'Password',
+    ],
 ];
