@@ -14,6 +14,7 @@ class ManagersServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerManager('AuthManager');
+        $this->registerManager('RolesManager');
     }
 
     /**

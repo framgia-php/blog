@@ -4,9 +4,12 @@ namespace App\Repositories;
 
 use BadMethodCallException;
 use Illuminate\Database\Eloquent\Model;
+use App\Support\BuildQuery;
 
 abstract class EloquentRepository
 {
+    use BuildQuery;
+
     /**
      * The available query builder methods can be called dynamic by repository.
      *
