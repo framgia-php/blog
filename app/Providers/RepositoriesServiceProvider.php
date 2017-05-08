@@ -14,6 +14,7 @@ class RepositoriesServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerRepository('RolesRepository');
+        $this->registerRepository('CategoriesRepository');
     }
 
     /**

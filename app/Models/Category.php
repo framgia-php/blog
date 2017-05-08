@@ -8,7 +8,7 @@ use App\Models\Relations\CategoryRelations;
 class Category extends Model
 {
     use CategoryRelations;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +19,7 @@ class Category extends Model
         'slug',
         'description',
         'active',
+        'position',
         'parent_id',
         'user_id',
     ];
