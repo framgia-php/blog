@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Entrust\UserEntrust;
 use App\Models\Relations\UserRelations;
+use App\Models\Accessors\UserAccessors;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, UserEntrust, UserRelations;
+    use Notifiable, SoftDeletes, UserEntrust, UserRelations, UserAccessors;
 
     /**
      * The attributes that are mass assignable.
@@ -52,4 +53,15 @@ class User extends Authenticatable
     protected $casts = [
         'active' => 'boolean',
     ];
+
+    /**
+     * Determine whether user is the creator of an model.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return bool
+     */
+    protected function isCreatorOf(Model $model)
+    {
+        return $user->getKey() === $model->user_id;
+    }
 }
