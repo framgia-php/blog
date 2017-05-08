@@ -31,6 +31,7 @@ Route::group([
     })->name('dashboard.index');
 
     Route::resource('roles', 'RolesController', ['except' => 'show']);
+    Route::resource('categories', 'CategoriesController', ['except' => 'show']);
 });
 
 Route::group(['as' => 'sites.', 'namespace' => 'Sites'], function () {

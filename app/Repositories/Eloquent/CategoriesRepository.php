@@ -5,9 +5,9 @@ namespace App\Repositories\Eloquent;
 use Illuminate\Http\Request;
 use App\Repositories\EloquentRepository;
 use App\Contracts\Repositories\Repository as BaseRepository;
-use App\Contracts\Repositories\RolesRepository as ResourcesRepository;
+use App\Contracts\Repositories\CategoriesRepository as ResourcesRepository;
 
-class RolesRepository extends EloquentRepository implements BaseRepository, ResourcesRepository
+class CategoriesRepository extends EloquentRepository implements BaseRepository, ResourcesRepository
 {
     /**
      * The fields that users can filter.
@@ -15,7 +15,7 @@ class RolesRepository extends EloquentRepository implements BaseRepository, Reso
      * @var array
      */
     protected $filterFields = [
-        'label' => 'like',
+        'title' => 'like',
     ];
 
     /**
@@ -25,7 +25,7 @@ class RolesRepository extends EloquentRepository implements BaseRepository, Reso
      */
     public function getModelClassName()
     {
-        return \App\Models\Role::class;
+        return \App\Models\Category::class;
     }
 
     /**
@@ -36,10 +36,12 @@ class RolesRepository extends EloquentRepository implements BaseRepository, Reso
      */
     public function listing(Request $request)
     {
-        $query = $this->newQuery();
+        $query = $this->newQuery()
+            ->orderby('position')
+            ->orderBy('id');
 
         $this->buildFilterQuery($query, $request);
 
-        return $query->paginate(config('setup.default_pagination_limit'));
+        return $query->get();
     }
 }
