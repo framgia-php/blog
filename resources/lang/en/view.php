@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'home' => 'Home',
     'logo_lg' => 'Framgia Blog',
     'logo_mini' => 'FRB',
     'profile' => 'Profile',
@@ -18,6 +19,30 @@ return [
     'can_not_find_any_records' => 'Can not find any records',
     'keyword' => 'Keyword',
     'search' => 'Search',
+    'new_category' => 'New Category',
+    'categories_management' => 'Categories Management',
+    'categories_view' => 'View Categories',
+    'categories_create' => 'Create category',
+    'categories_edit' => 'Edit category',
+    'tags_management' => 'Tags Management',
+    'tags_view' => 'View Tags',
+    'tags_create' => 'Create tag',
+    'tags_edit' => 'Edit tag',
+    'posts_management' => 'Posts Management',
+    'posts_view' => 'View Posts',
+    'posts_create' => 'Create Post',
+    'posts_edit' => 'Edit Post',
+    'yes' => 'Yes',
+    'no' => 'No',
+
+    'thead' => [
+        'active' => 'Active',
+        'actions' => 'Actions',
+        'position' => 'Position',
+        'category_title' => 'Title',
+        'category_slug' => 'Slug',
+        'category_description' => 'Description',
+    ],
 
     'placeholder' => [
         'email' => 'Email',
