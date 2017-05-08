@@ -20,6 +20,7 @@ return [
     'keyword' => 'Keyword',
     'search' => 'Search',
     'new_category' => 'New Category',
+    'new_tag' => 'New Tag',
     'categories_management' => 'Categories Management',
     'categories_view' => 'View Categories',
     'categories_create' => 'Create category',
@@ -39,9 +40,13 @@ return [
         'active' => 'Active',
         'actions' => 'Actions',
         'position' => 'Position',
+        'creator' => 'Creator',
+        'created_at' => 'Created At',
         'category_title' => 'Title',
         'category_slug' => 'Slug',
         'category_description' => 'Description',
+        'tag_title' => 'Title',
+        'posts_count' => 'Posts Count',
     ],
 
     'placeholder' => [

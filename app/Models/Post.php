@@ -8,7 +8,7 @@ use App\Models\Relations\PostRelations;
 class Post extends Model
 {
     use PostRelations;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,7 +17,7 @@ class Post extends Model
     protected $fillable = [
         'title',
         'slug',
-        'summary'
+        'summary',
         'content',
         'active',
         'is_trending',

@@ -51,7 +51,7 @@ abstract class EloquentRepository
 
         $relations = is_array($args[0]) ? $args[0] : $args;
 
-        return $this->newModel()->with($relations)->query();
+        return $this->newModel()->with($relations)->newQuery();
     }
 
     /**
@@ -117,6 +117,6 @@ abstract class EloquentRepository
             return $this->newModel()->{$method}(...$parameters);
         }
 
-        throw new BadMethodCallException('Method '. static::class .'::'. $method . ' does not exist.');
+        throw new BadMethodCallException('Method ' . static::class . '::' . $method . ' does not exist.');
     }
 }

@@ -32,6 +32,7 @@ Route::group([
 
     Route::resource('roles', 'RolesController', ['except' => 'show']);
     Route::resource('categories', 'CategoriesController', ['except' => 'show']);
+    Route::resource('tags', 'TagsController', ['except' => 'show']);
 });
 
 Route::group(['as' => 'sites.', 'namespace' => 'Sites'], function () {

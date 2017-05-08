@@ -35,3 +35,10 @@ $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
         'parent_id' => 0,
     ];
 });
+
+$factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $title = $faker->text(30),
+        'slug' => Str::slug($title),
+    ];
+});
