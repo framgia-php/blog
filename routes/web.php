@@ -36,7 +36,5 @@ Route::group([
 });
 
 Route::group(['as' => 'sites.', 'namespace' => 'Sites'], function () {
-    Route::get('/', function () {
-        return view('sites.master');
-    })->name('home.index');
+    Route::get('/', 'HomeController@index')->name('home.index');
 });

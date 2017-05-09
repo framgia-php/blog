@@ -32,13 +32,17 @@ module.exports = {
     styles: {
         basePath: '..',
         ownerPath: '../sites/css',
+        publicPath: '../../../public/css',
         bowers: [
             'bootstrap-3.3.7/dist/css/bootstrap.min.css',
             'font-awesome-4.6.0/css/font-awesome.min.css',
             'select2-4.0.3/dist/css/select2.min.css'
         ],
         owners: [
-            'styles.css'
+            'styles.css',
+        ],
+        public: [
+            'sites.style.css'
         ],
         destination: 'public/css/sites.min.css'
     },
@@ -58,5 +62,18 @@ module.exports = {
             //
         ],
         destination: 'public/js/sites.min.js'
+    },
+
+    /**
+     * Scripts configuration.
+     */
+    sass: {
+        basePath: '..',
+        ownerPath: '../sites/sass',
+        bowers: [],
+        owners: [
+            'styles.scss'
+        ],
+        destination: 'public/css/sites.style.css'
     }
 };

@@ -7,22 +7,54 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {{ link_to_route('sites.home.index', config('app.name'), [], ['class' => 'navbar-brand']) }}
+            <a href="{{ route('sites.home.index') }}" class="navbar-brand">
+                {{ config('app.name') }}
+            </a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                <li class="active">
+                    <a href="#">
+                        Posts
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Authors
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Tags
+                    </a>
+                </li>
+                <li class="dropdown notifications">
+                    <a href="#" class="dropdown-toggle text-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-globe"></span>
+                        <span class="badge">5</span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">
+                                someome alreay follow you.
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 @guest
                     <li>
-                        {{ link_to_route('auth.login.index', trans('view.login')) }}
+                        <a href="{{ route('auth.login.index') }}" title="{{ trans('view.login') }}">
+                            {{ trans('view.login') }}
+                        </a>
                     </li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->fullname }} <span class="caret"></span>
+                            {{ Html::image(Auth::user()->avatar_path, Auth::user()->fullname, ['class' => 'user-avatar']) }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li role="separator" class="divider"></li>
                             <li>
                                 {{ Form::open(['route' => 'auth.login.logout', 'method' => 'delete']) }}
                                     {{ Form::submit(trans('view.logout'), [
@@ -35,12 +67,6 @@
                     </li>
                 @endguest
             </ul>
-
-            <form class="navbar-form navbar-right">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-            </form>
         </div>
     </div>
 </nav>
