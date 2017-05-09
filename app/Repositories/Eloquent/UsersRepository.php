@@ -43,4 +43,17 @@ class UsersRepository extends EloquentRepository implements BaseRepository, Reso
 
         return $query->paginate(config('setup.default_pagination_limit'));
     }
+
+    /**
+     * Find user by username.
+     *
+     * @param  string  $username
+     * @return \App\Models\User
+     *
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     */
+    public function findUsernameOrFail($username)
+    {
+        return $this->newQuery()->where('username', $username)->firstOrFail();
+    }
 }
