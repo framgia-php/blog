@@ -34,6 +34,7 @@ Route::group([
     Route::resource('users', 'UsersController', ['except' => 'show']);
     Route::resource('categories', 'CategoriesController', ['except' => 'show']);
     Route::resource('tags', 'TagsController', ['except' => 'show']);
+    Route::resource('posts', 'PostsController', ['except' => 'show']);
 });
 
 Route::group(['as' => 'sites.', 'namespace' => 'Sites'], function () {

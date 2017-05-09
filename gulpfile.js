@@ -4,6 +4,7 @@ const ASSETS_PATH = 'resources/assets/';
 const BOWERS_PATH = ASSETS_PATH + 'bowers/';
 const STYLES_PATH = '../';
 const SCRIPTS_PATH = '../';
+const BASE_PATH_FROM_ASSETS = '../../../';
 
 elixir(mix => {
     /**
@@ -19,12 +20,15 @@ elixir(mix => {
         BOWERS_PATH + 'Ionicons-2.0.1/fonts',
     ], 'public/fonts');
 
+    mix.sass('admin/styles.scss', 'public/css/admin_styles_scss.css');
+
     mix.styles([
         STYLES_PATH + 'bowers/AdminLTE-2.3.11/bootstrap/css/bootstrap.min.css',
         STYLES_PATH + 'bowers/font-awesome-4.5.0/css/font-awesome.min.css',
         STYLES_PATH + 'bowers/Ionicons-2.0.1/css/ionicons.min.css',
         STYLES_PATH + 'bowers/AdminLTE-2.3.11/dist/css/AdminLTE.min.css',
-        STYLES_PATH + 'bowers/AdminLTE-2.3.11/dist/css/skins/_all-skins.min.css'
+        STYLES_PATH + 'bowers/AdminLTE-2.3.11/dist/css/skins/_all-skins.min.css',
+        BASE_PATH_FROM_ASSETS + 'public/css/admin_styles_scss.css'
     ], 'public/css/admin.min.css');
 
     mix.scripts([
@@ -39,7 +43,7 @@ elixir(mix => {
     /**
      * All sites assets tasks.
      */
-    mix.sass('sites/styles.scss', ASSETS_PATH + 'css/sites_styles_scss.css');
+    mix.sass('sites/styles.scss', 'public/css/sites_styles_scss.css');
 
     mix.copy([
         'resources/assets/bowers/bootstrap-3.3.7/dist/fonts',
@@ -50,7 +54,7 @@ elixir(mix => {
         STYLES_PATH + 'bowers/bootstrap-3.3.7/dist/css/bootstrap.min.css',
         STYLES_PATH + 'bowers/font-awesome-4.6.0/css/font-awesome.min.css',
         STYLES_PATH + 'bowers/select2-4.0.3/dist/css/select2.min.css',
-        'sites_styles_scss.css'
+        BASE_PATH_FROM_ASSETS + 'public/css/sites_styles_scss.css',
     ], 'public/css/sites.min.css');
 
     mix.scripts([
