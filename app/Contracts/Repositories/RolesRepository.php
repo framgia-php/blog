@@ -13,4 +13,13 @@ interface RolesRepository
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function listing(Request $request);
+
+    /**
+     * Store a new role with permissions.
+     *
+     * @param  array  $attributes
+     * @param  array  $permissionIds
+     * @return void
+     */
+    public function storeWithPermissions(array $attributes, array $permissionIds);
 }
