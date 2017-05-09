@@ -16,6 +16,7 @@ bootstrap/cache/
 /public/img
 /public/js
 /public/png
+/public/uploads
 /public/mix-manifest.json
 /resources/assets/bowers
 /resources/assets/css/*_scss.*
