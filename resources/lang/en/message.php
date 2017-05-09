@@ -7,6 +7,7 @@ return [
      */
     'success' => [
         'authenticated' => 'Authenticated successfully.',
+        'update_user_profile' => 'Update user profile successfully.',
     ],
 
     /*
@@ -14,6 +15,7 @@ return [
      */
     'failure' => [
         'unauthenticated' => 'Authenticated failed.',
+        'update_user_profile' => 'Update user profile failed.',
     ],
 
 ];

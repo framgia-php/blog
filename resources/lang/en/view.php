@@ -40,6 +40,13 @@ return [
     'yes' => 'Yes',
     'no' => 'No',
     'cancel' => 'Cancel',
+    'update_user_profile' => 'Update Profile',
+    'username' => 'Username',
+    'email' => 'Email',
+    'fullname' => 'Fullname',
+    'avatar' => 'Avatar',
+    'edit' => 'Edit',
+    'user_profile' => 'User Profile',
 
     'thead' => [
         'active' => 'Active',
@@ -56,10 +63,14 @@ return [
         'tag_title' => 'Title',
         'posts_count' => 'Posts Count',
         'comments_count' => 'Comments Count',
+        'avatar' => 'Avatar',
     ],
 
     'placeholder' => [
         'email' => 'Email',
         'password' => 'Password',
+        'username' => 'Username',
+        'fullname' => 'Fullname',
+        'avatar' => 'Avatar',
     ],
 ];

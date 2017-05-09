@@ -54,6 +54,7 @@ elixir(mix => {
         STYLES_PATH + 'bowers/bootstrap-3.3.7/dist/css/bootstrap.min.css',
         STYLES_PATH + 'bowers/font-awesome-4.6.0/css/font-awesome.min.css',
         STYLES_PATH + 'bowers/select2-4.0.3/dist/css/select2.min.css',
+        STYLES_PATH + 'bowers/toastr-2.1.3/toastr.min.css',
         BASE_PATH_FROM_ASSETS + 'public/css/sites_styles_scss.css',
     ], 'public/css/sites.min.css');
 
@@ -61,6 +62,7 @@ elixir(mix => {
         SCRIPTS_PATH + 'bowers/jquery-3.2.1/dist/jquery.min.js',
         SCRIPTS_PATH + 'bowers/bootstrap-3.3.7/dist/js/bootstrap.min.js',
         SCRIPTS_PATH + 'bowers/select2-4.0.3/dist/js/select2.full.min.js',
+        SCRIPTS_PATH + 'bowers/toastr-2.1.3/toastr.min.js',
         'sites/comments.js'
     ], 'public/js/sites.min.js');
 

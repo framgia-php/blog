@@ -1,4 +1,4 @@
-$backgroud-color: #ffffff;
+$backgroud-color: #f0f0f0;
 $danger-color: #a94442;
 $primary-color: #5488c7;
 $primary-grey-color: #dddddd;
@@ -318,8 +318,8 @@ body {
     }
 }
 
-/* #post-detail -------------------------------------------------------------*/
-#post-detail {
+/* post-detail -------------------------------------------------------------*/
+.post-detail {
     .tags {
         margin-top: 15px;
 
@@ -355,4 +355,9 @@ body {
             padding: 10px 0;
         }
     }
+}
+
+/* .login-container ---------------------------------------------------------*/
+.login-container {
+    margin-top: 55px;
 }

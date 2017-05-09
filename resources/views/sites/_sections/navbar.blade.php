@@ -56,6 +56,11 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
+                                <a href="{{ route('sites.users.show', Auth::user()->username) }}" title="{{ trans('view.profile') }}">
+                                    {{ trans('view.profile') }}
+                                </a>
+                            </li>
+                            <li>
                                 {{ Form::open(['route' => 'auth.login.logout', 'method' => 'delete']) }}
                                     {{ Form::submit(trans('view.logout'), [
                                         'title' => trans('view.logout'),

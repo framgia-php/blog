@@ -22,5 +22,7 @@
     </div>
 
     {{ Html::script(elixir('js/sites.min.js')) }}
+
+    @stack('scripts')
 </body>
 </html>
