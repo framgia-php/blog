@@ -33,6 +33,9 @@ return [
     'posts_view' => 'View Posts',
     'posts_create' => 'Create Post',
     'posts_edit' => 'Edit Post',
+    'users_management' => 'Users Management',
+    'users_view' => 'View Users',
+    'new_user' => 'New User',
     'yes' => 'Yes',
     'no' => 'No',
 
@@ -42,6 +45,8 @@ return [
         'position' => 'Position',
         'creator' => 'Creator',
         'created_at' => 'Created At',
+        'fullname' => 'Full Name',
+        'email' => 'Email',
         'category_title' => 'Title',
         'category_slug' => 'Slug',
         'category_description' => 'Description',
