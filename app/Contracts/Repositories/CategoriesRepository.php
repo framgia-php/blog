@@ -13,4 +13,11 @@ interface CategoriesRepository
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function listing(Request $request);
+
+    /**
+     * Get all recursive categories.
+     *
+     * @return array
+     */
+    public function getRecursiveCategoriesOptions();
 }

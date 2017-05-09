@@ -36,12 +36,46 @@ class CategoriesRepository extends EloquentRepository implements BaseRepository,
      */
     public function listing(Request $request)
     {
-        $query = $this->newQuery()
-            ->orderby('position')
-            ->orderBy('id');
+        $query = $this->newQuery()->orderby('position')->orderBy('id');
 
         $this->buildFilterQuery($query, $request);
 
-        return $query->get();
+        return $query->paginate(config('setup.default_pagination_limit'));
+    }
+
+    /**
+     * Get all recursive categories.
+     *
+     * @return array
+     */
+    public function getRecursiveCategoriesOptions()
+    {
+        $categories = $this->all(['id', 'parent_id', 'title']);
+
+        $options = $this->recursive($categories, 0);
+
+        return $options;
+    }
+
+    /**
+     * Recursive categories.
+     *
+     * @param  \Illuminate\Database\Eloquent\Collection
+     * @param  integer  $parentId
+     * @param  string  $indent
+     * @param  array  $options
+     * @return array
+     */
+    protected function recursive($categories, $parentId = 0, $indent = '', $options = [])
+    {
+        foreach ($categories as $key => $category) {
+            if ($category->parent_id === $parentId) {
+                $options[$category->id] = $indent . $category->title;
+                $categories->pull($key);
+                $options = $this->recursive($categories, $category->id, $indent . '---', $options);
+            }
+        }
+
+        return $options;
     }
 }

@@ -39,6 +39,7 @@ return [
     'new_post' => 'New Post',
     'yes' => 'Yes',
     'no' => 'No',
+    'save' => 'Save',
     'cancel' => 'Cancel',
     'update_user_profile' => 'Update Profile',
     'username' => 'Username',
@@ -47,6 +48,11 @@ return [
     'avatar' => 'Avatar',
     'edit' => 'Edit',
     'user_profile' => 'User Profile',
+    'manage_categories' => 'Manage Categories',
+    'manage_tags' => 'Manage Tags',
+    'manage_posts' => 'Manage Posts',
+    'manage_users' => 'Manage Users',
+    'manage_roles' => 'Manage Roles',
 
     'thead' => [
         'active' => 'Active',
@@ -57,6 +63,8 @@ return [
         'fullname' => 'Full Name',
         'email' => 'Email',
         'title' => 'Title',
+        'description' => 'Description',
+        'parent_category' => 'Parent Category',
         'category_title' => 'Title',
         'category_slug' => 'Slug',
         'category_description' => 'Description',
@@ -72,5 +80,6 @@ return [
         'username' => 'Username',
         'fullname' => 'Fullname',
         'avatar' => 'Avatar',
+        'title' => 'Title',
     ],
 ];
