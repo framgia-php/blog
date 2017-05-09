@@ -36,8 +36,10 @@ return [
     'users_management' => 'Users Management',
     'users_view' => 'View Users',
     'new_user' => 'New User',
+    'new_post' => 'New Post',
     'yes' => 'Yes',
     'no' => 'No',
+    'cancel' => 'Cancel',
 
     'thead' => [
         'active' => 'Active',
@@ -47,11 +49,13 @@ return [
         'created_at' => 'Created At',
         'fullname' => 'Full Name',
         'email' => 'Email',
+        'title' => 'Title',
         'category_title' => 'Title',
         'category_slug' => 'Slug',
         'category_description' => 'Description',
         'tag_title' => 'Title',
         'posts_count' => 'Posts Count',
+        'comments_count' => 'Comments Count',
     ],
 
     'placeholder' => [
