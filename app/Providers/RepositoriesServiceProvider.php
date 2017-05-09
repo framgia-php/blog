@@ -16,6 +16,8 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->registerRepository('RolesRepository');
         $this->registerRepository('CategoriesRepository');
         $this->registerRepository('TagsRepository');
+        $this->registerRepository('UsersRepository');
+        $this->registerRepository('PostsRepository');
     }
 
     /**

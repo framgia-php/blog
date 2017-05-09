@@ -17,6 +17,8 @@ class ManagersServiceProvider extends ServiceProvider
         $this->registerManager('RolesManager');
         $this->registerManager('CategoriesManager');
         $this->registerManager('TagsManager');
+        $this->registerManager('UsersManager');
+        $this->registerManager('PostsManager');
     }
 
     /**
