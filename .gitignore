@@ -10,6 +10,7 @@ bootstrap/cache/
 .env.*.php
 .env.php
 .env
+composer.lock
 /public/build
 /public/css
 /public/fonts

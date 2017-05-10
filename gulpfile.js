@@ -63,6 +63,7 @@ elixir(mix => {
         SCRIPTS_PATH + 'bowers/bootstrap-3.3.7/dist/js/bootstrap.min.js',
         SCRIPTS_PATH + 'bowers/select2-4.0.3/dist/js/select2.full.min.js',
         SCRIPTS_PATH + 'bowers/toastr-2.1.3/toastr.min.js',
+        BASE_PATH_FROM_ASSETS + 'public/js/laroute.js',
         'sites/comments.js'
     ], 'public/js/sites.min.js');
 
