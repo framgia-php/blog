@@ -45,7 +45,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="text-right">
-                            <a href="#" class="btn btn-default">
+                            <a href="{{ route('admin.categories.create') }}"
+                                title="{{ trans('view.new_category') }}"
+                                class="btn btn-default btn-sm">
                                 {{ trans('view.new_category') }}
                             </a>
                         </div>
@@ -77,7 +79,7 @@
 
         <div class="box-footer">
             <div class="text-right">
-                {{ isset($paginator) ? $paginator->appends(request()->all())->links() : '' }}
+                {{ $categories->appends(request()->all())->links() }}
             </div>
         </div>
     </div>

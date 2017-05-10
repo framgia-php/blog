@@ -17,15 +17,14 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">{{ Auth::user()->fullname }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
                             <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                {{ Auth::user()->fullname }}
                             </p>
                         </li>
                         <!-- Menu Body -->
@@ -49,9 +48,11 @@
                                 </a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">
-                                    {{ trans('view.logout') }}
-                                </a>
+                                {{ Form::open(['route' => 'auth.login.logout', 'method' => 'delete']) }}
+                                    <button type="submit" class="btn btn-default btn-flat">
+                                        {{ trans('view.logout') }}
+                                    </button>
+                                {{ Form::close() }}
                             </div>
                         </li>
                     </ul>
