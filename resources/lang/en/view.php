@@ -72,6 +72,8 @@ return [
         'posts_count' => 'Posts Count',
         'comments_count' => 'Comments Count',
         'avatar' => 'Avatar',
+        'role_label' => 'Role Label',
+        'description' => 'Description',
     ],
 
     'placeholder' => [

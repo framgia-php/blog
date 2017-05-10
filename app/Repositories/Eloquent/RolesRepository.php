@@ -42,4 +42,18 @@ class RolesRepository extends EloquentRepository implements BaseRepository, Reso
 
         return $query->paginate(config('setup.default_pagination_limit'));
     }
+
+    /**
+     * Store a new role with permissions.
+     *
+     * @param  array  $attributes
+     * @param  array  $permissionIds
+     * @return void
+     */
+    public function storeWithPermissions(array $attributes, array $permissionIds)
+    {
+        $newRole = $this->store($attributes);
+
+        $newRole->permissions()->attach($permissionIds);
+    }
 }
