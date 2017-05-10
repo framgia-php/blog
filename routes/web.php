@@ -39,4 +39,10 @@ Route::group([
 
 Route::group(['as' => 'sites.', 'namespace' => 'Sites'], function () {
     Route::get('/', 'HomeController@index')->name('home.index');
+    Route::get('users/{username}', 'UsersController@show')->name('users.show');
+    
+    Route::group(['mddleware' => 'profile'], function () {
+        Route::get('users/{username}/edit', 'UsersController@edit')->name('users.edit');
+        Route::put('users/{username}', 'UsersController@update')->name('users.update');
+    });
 });

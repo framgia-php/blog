@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Contracts\Repositories\UsersRepository;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,7 +24,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Route::bind('role', \App\Models\Role::class);
+        Route::bind('permission', \App\Models\Permission::class);
+        Route::bind('user', \App\Models\User::class);
+        Route::bind('post', \App\Models\Post::class);
+        Route::bind('tag', \App\Models\Tag::class);
+        Route::bind('category', \App\Models\Category::class);
+        Route::bind('comment', \App\Models\Comment::class);
+
+        Route::bind('username', function ($username) {
+            return app(UsersRepository::class)->findUsernameOrFail($username);
+        });
 
         parent::boot();
     }

@@ -13,4 +13,14 @@ interface UsersRepository
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function listing(Request $request);
+
+    /**
+     * Find user by username.
+     *
+     * @param  string  $username
+     * @return \App\Models\User
+     *
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     */
+    public function findUsernameOrFail($username);
 }

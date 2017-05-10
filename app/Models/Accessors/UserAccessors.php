@@ -56,6 +56,16 @@ trait UserAccessors
     }
 
     /**
+     * Get resolved avatar path.
+     *
+     * @return string
+     */
+    public function getAvatarPathAttribute()
+    {
+        return config('setup.users_avatars_path') . $this->avatar;
+    }
+
+    /**
      * Determine whether user is type.
      *
      * @param  string  $type
