@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="summary">
-                        <h2 class="summary-title">Summary</h2>
+                        <h2 class="summary-title">{{ trans('views.summary') }}</h2>
                         <p class="summary-text">{!! $post->summary !!}</p>
                     </div>
                     <div class="content">
