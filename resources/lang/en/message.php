@@ -2,6 +2,8 @@
 
 return [
 
+    'confirm_post_delete' => 'Are you sure to delete this post?',
+
     /*
      * Define all application success messages.
      */

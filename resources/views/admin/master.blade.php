@@ -6,9 +6,19 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @if (session('status') === 'success')
+        <meta name="status" content="success" />
+        <meta name="message" content="{{ session('message') }}" />
+    @elseif (session('status') === 'failure')
+        <meta name="status" content="failure" />
+        <meta name="error" content="{{ session('error') }}"/>
+    @endif
+
     <title>{{ config('app.name') }} | @yield('title')</title>
 
     {{ Html::style(elixir('css/admin.min.css')) }}
+
+    @stack('styles')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -29,27 +39,6 @@
 
     {{ Html::script(elixir('js/admin.min.js')) }}
 
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        $(document).ready(function () {
-            $(document).on('click', '.btn-delete-resource', function (e) {
-                e.preventDefault();
-
-                if (confirm('Do you want to delete?')) {
-                    var route = $(this).attr('href');
-
-                    $.post(route, { _method: 'delete' })
-                        .done(function (response) {
-                            window.location.reload();
-                        });
-                }
-            });
-        });
-    </script>
+    @stack('scripts')
 </body>
 </html>

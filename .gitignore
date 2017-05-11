@@ -18,6 +18,7 @@ composer.lock
 /public/js
 /public/png
 /public/uploads
+/public/plugins
 /public/mix-manifest.json
 /resources/assets/bowers
 /resources/assets/css/*_scss.*

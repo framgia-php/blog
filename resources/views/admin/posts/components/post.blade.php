@@ -7,10 +7,12 @@
         @include('admin._components.active_locked', ['active' => $post->active])
     </td>
     <td class="text-center">
-        <a href="#" class="btn btn-default btn-xs">
+        <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-default btn-xs">
             <i class="fa fa-pencil"></i>
         </a>
-        <a href="#" class="btn btn-danger btn-xs">
+        <a href="{{ route('admin.posts.destroy', $post->id) }}"
+            confirm-message="{{ trans('message.confirm_post_delete') }}"
+            class="btn btn-danger btn-xs btn-delete-resource">
             <i class="fa fa-trash"></i>
         </a>
     </td>

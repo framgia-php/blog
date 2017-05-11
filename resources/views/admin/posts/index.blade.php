@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="text-right">
-                            <a href="#" class="btn btn-default">
+                            <a href="{{ route('admin.posts.create') }}" class="btn btn-default btn-sm">
                                 {{ trans('view.new_post') }}
                             </a>
                         </div>
