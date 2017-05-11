@@ -1,144 +1,146 @@
 @extends('sites.master')
 
-@php
-    $comments = App\Models\Comment::limit(3)->get();
-@endphp
+@push('styles')
+<style>
+    .sidebar-section-author .author-avatar {
+        margin: auto;
+    }
+</style>
+@endpush
 
 @section('content')
-    <div id="main">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="post-detail">
-                        <h1 class="title">
-                            [Become a SuperUser - Part 0] Unix vs Linux. Nguồn gốc và sự khác biệt
-                        </h1>
-                        <ul class="list-inline tags">
+<div id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="post-detail">
+                    <h1 class="title">
+                        {{ $post->title }}
+                    </h1>
+                    <ul class="list-inline tags">
+                        @foreach($post->tags as $tag)
                             <li>
                                 <a href="javascript:void(0)" class="label label-info">
-                                    Editor's choice
+                                    {{ $tag->title }}
                                 </a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)" class="label label-info">
-                                    PHP
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" class="label label-info">
-                                    Javascript
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="short-info">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <span class="fa fa-pencil"></span> Nguyen Xuan Quynh
-                                    <span>&nbsp;&nbsp;</span>
-                                    <span class="fa fa-calendar"></span> 01:01 01/01/2017
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="text-right">
-                                        <a href="javascript:void(0)" class="btn-move-to-comment">
-                                            <span class="fa fa-comments-o"></span> 16
-                                        </a>
-                                    </div>
+                        @endforeach
+                    </ul>
+                    <div class="short-info">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span class="fa fa-pencil"></span> {{ $post->creator->fullname }}
+                                <span>&nbsp;&nbsp;</span>
+                                <span class="fa fa-calendar"></span> {{ $post->published_at }}
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-right">
+                                    <a href="javascript:void(0)" class="btn-move-to-comment">
+                                        <span class="fa fa-comments-o"></span> {{ $post->comments()->count() }}
+                                    </a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="summary">
-                            <h2 class="summary-title">Summary</h2>
-                            <p class="summary-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                        <div class="content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         </div>
                     </div>
-
-                    <div class="comments">
-                        @foreach($comments as $comment)
-                        <div class="comment" data-comment-id="{{ $comment->id }}">
-                            <div class="user">
-                                <a href="javascript:void(0)">
-                                    <img src="/img/default_avatar.png" alt="img-responsive">
-                                </a>
-                            </div>
-                            <div class="info">
-                                <div class="title">
-                                    Nguyen Xuan Quynh
-                                </div>
-                                <div class="text">
-                                    <p class="comment-content">Không hiểu nhưng vẫn thank you! =))</p>
-                                    <div class="comment-content-edit hide">
-                                        <textarea name="name" class="form-control">Không hiểu nhưng vẫn thank you! =))</textarea>
-                                        <div class="actions text-right">
-                                            <button type="button" class="btn btn-default btn-xs comment-button-cancel-edit" name="button">Cancel</button>
-                                            <button type="button" class="btn btn-info btn-xs" name="button">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="buttons">
-                                <a href="javascript:void(0)" class="comment-button-reply" data-comment-id="{{ $comment->id }}">
-                                    <i class="fa fa-reply"></i> Reply
-                                </a>
-                                <a href="javascript:void(0)" class="comment-button-edit" data-comment-id="{{ $comment->id }}">
-                                    <i class="fa fa-pencil"></i> Edit
-                                </a>
-                                <a href="javascript:void(0)">
-                                    <i class="fa fa-trash"></i> Delete
-                                </a>
-                            </div>
-                            <div class="reply hide">
-                                <textarea name="name" class="form-control"></textarea>
-                                <div class="actions text-right">
-                                    <button type="button" class="btn btn-default btn-sm comment-button-cancel-reply" name="button">Cancel</button>
-                                    <button type="button" class="btn btn-info btn-sm" name="button">Submit</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix comment-divider"></div>
-                        @endforeach
-                        <div class="comment comment-child">
-                            <div class="user">
-                                <a href="javascript:void(0)">
-                                    <img src="/img/default_avatar.png" alt="img-responsive">
-                                </a>
-                            </div>
-                            <div class="info">
-                                <div class="title">
-                                    Nguyen Xuan Quynh
-                                </div>
-                                <div class="text">
-                                    <p>Không hiểu nhưng vẫn thank you! =))</p>
-                                </div>
-                            </div>
-                            <div class="buttons">
-                                <a href="javascript:void(0)">
-                                    <i class="fa fa-reply"></i> Reply
-                                </a>
-                                <a href="javascript:void(0)">
-                                    <i class="fa fa-pencil"></i> Edit
-                                </a>
-                                <a href="javascript:void(0)">
-                                    <i class="fa fa-trash"></i> Delete
-                                </a>
-                            </div>
-                            <div class="reply hide">
-                                <textarea name="name" class="form-control"></textarea>
-                                <div class="actions text-right">
-                                    <button type="button" class="btn btn-default btn-sm" name="button">Cancel</button>
-                                    <button type="button" class="btn btn-info btn-sm" name="button">Submit</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="summary">
+                        <h2 class="summary-title">Summary</h2>
+                        <p class="summary-text">{!! $post->summary !!}</p>
+                    </div>
+                    <div class="content">
+                        {!! $post->content !!}
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                @login
+                    @include('sites._components.comments', [
+                        'comments' => $post->comments,
+                        'commentableId' => $post->id,
+                    ])
+                @endlogin
+            </div>
 
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-section-title text-center">
+                            {{ trans('view.author') }}
+                        </h3>
+                        <div class="sidebar-section-author">
+                            <a href="{{ route('sites.users.show', ['username' => $user->username]) }}">
+                                {{ Html::image($user->avatar_path, $user->fullname, ['class' => 'img-responsive author-avatar']) }}
+                            </a>
+                            <ul class="list-unstyled">
+                                <li class="text-center">
+                                    <a href="{{ route('sites.users.show', ['username' => $user->username]) }}">
+                                        {{ $user->fullname }}
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="javascript:void(0)">
+                                        <i class="fa fa-pencil"></i>
+                                        {{ $user->posts()->count() }}
+                                    </a>
+                                </li>
+                                @if(Auth::id() !== $user->getKey())
+                                    <li class="text-center">
+                                        {{ Form::open(['route' => ['sites.users.follow', Auth::id(), $user->getKey() ]]) }}
+                                            <button type="submit" class="btn btn-default">
+                                                {{ trans('view.follow') }}
+                                            </button>
+                                        {{ Form::close() }}
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+
+                    @if($trendingPosts->isNotEmpty())
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-section-title">{{ trans('view.trending_posts') }}</h3>
+                            <div class="sidebar-section-posts">
+                                @foreach($trendingPosts as $post)
+                                    <div class="post" style="margin-bottom: 30px;">
+                                        <h4 class="post-info-title">
+                                            <a href="{{ route('sites.posts.show', [$post->creator->username, $post->slug]) }}">{{ $post->title }}</a>
+                                        </h4>
+                                        <div class="post-info-publish">
+                                            <a href="{{ route('sites.users.show', ['username' => $post->creator->username]) }}">
+                                                {{ $post->creator->fullname }}
+                                            </a>
+                                            <span>&nbsp;&nbsp;&nbsp;</span>
+                                            <span>{{ $post->published_at }}</span>
+                                            <span>&nbsp;&nbsp;&nbsp;</span>
+                                            <span>
+                                                <i class="fa fa-comment-o"></i>
+                                                {{ $post->comments()->count() }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
+                    @if($tags->isNotEmpty())
+                        <div class="sidebar-section">
+                            <h3 class="sidebar-section-title">{{ trans('view.tags') }}</h3>
+                            <div class="sidebar-section-tags">
+                                @foreach($tags as $tag)
+                                    <div class="btn-group tag">
+                                        <a href="{{ route('sites.tags.show', [$tag->slug]) }}" class="btn btn-default btn-sm">
+                                            {{ $tag->title }}
+                                        </a>
+                                        <button type="button" class="btn btn-primary btn-sm">
+                                            {{ $tag->posts_count }}
+                                        </button>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
