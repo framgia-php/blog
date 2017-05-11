@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeColumnTagsTaggableTypeIntoString extends Migration
+class ChangeColumnTaggableTypeIntoStringOnTaggablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ChangeColumnTagsTaggableTypeIntoString extends Migration
      */
     public function up()
     {
-        Schema::table('tags', function (Blueprint $table) {
+        Schema::table('taggables', function (Blueprint $table) {
             $table->string('taggable_type')->nullable()->change();
         });
     }
@@ -25,7 +25,7 @@ class ChangeColumnTagsTaggableTypeIntoString extends Migration
      */
     public function down()
     {
-        Schema::table('tags', function (Blueprint $table) {
+        Schema::table('taggables', function (Blueprint $table) {
             $table->unsignedInteger('taggable_type')->change();
         });
     }

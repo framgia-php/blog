@@ -28,12 +28,14 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('role', \App\Models\Role::class);
         Route::bind('permission', \App\Models\Permission::class);
         Route::bind('user', \App\Models\User::class);
-        Route::bind('post', \App\Models\Post::class);
+        // Route::bind('post', \App\Models\Post::class);
         Route::bind('tag', \App\Models\Tag::class);
         Route::bind('category', \App\Models\Category::class);
         Route::bind('comment', function ($comment) {
             return \App\Models\Comment::findOrFail($comment);
         });
+        // Route::bind('category', \App\Models\Category::class);
+        Route::bind('comment', \App\Models\Comment::class);
 
         Route::bind('username', function ($username) {
             return app(UsersRepository::class)->findUsernameOrFail($username);

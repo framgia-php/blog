@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use App\Repositories\EloquentRepository;
 use App\Contracts\Repositories\Repository as BaseRepository;
@@ -40,6 +41,19 @@ class PostsRepository extends EloquentRepository implements BaseRepository, Reso
 
         $this->buildFilterQuery($query, $request);
 
+        $this->buildRelationsFilterQuery($query, $request);
+
         return $query->paginate(config('setup.default_pagination_limit'));
+    }
+
+    protected function buildRelationsFilterQuery(Builder $query, Request $request)
+    {
+        if ($request->has('keyword')) {
+            $keyword = $this->replaceLikeEscapeString($request->query('keyword'));
+
+            $query->orWhereHas('creator', function ($query) use ($keyword) {
+                $query->where('fullname', 'like', $keyword);
+            });
+        }
     }
 }
