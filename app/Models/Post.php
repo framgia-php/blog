@@ -40,4 +40,20 @@ class Post extends Model
     protected $casts = [
         'active' => 'boolean',
     ];
+
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('active', config('setup.status_active'));
+    }
+
+    public function scopeTrending($query)
+    {
+        return $query->where('is_trending', config('setup.post_is_trending'));
+    }
 }

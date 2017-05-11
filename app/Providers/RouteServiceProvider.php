@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use App\Contracts\Repositories\UsersRepository;
@@ -30,10 +31,22 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('post', \App\Models\Post::class);
         Route::bind('tag', \App\Models\Tag::class);
         Route::bind('category', \App\Models\Category::class);
-        Route::bind('comment', \App\Models\Comment::class);
+        Route::bind('comment', function ($comment) {
+            return \App\Models\Comment::findOrFail($comment);
+        });
 
         Route::bind('username', function ($username) {
             return app(UsersRepository::class)->findUsernameOrFail($username);
+        });
+
+        Route::bind('post_slug', function ($slug) {
+            $user = request()->route('username');
+
+            $query = $user instanceof \App\Models\User
+                ? $user->posts()
+                : \App\Models\Post::query();
+
+            return $query->where('slug', $slug)->firstOrFail();
         });
 
         parent::boot();

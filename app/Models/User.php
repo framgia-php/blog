@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use App\Entrust\UserEntrust;
 use App\Models\Relations\UserRelations;
 use App\Models\Accessors\UserAccessors;
@@ -54,14 +55,18 @@ class User extends Authenticatable
         'active' => 'boolean',
     ];
 
+    protected $appends = [
+        'avatar_path',
+    ];
+
     /**
      * Determine whether user is the creator of an model.
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
      * @return bool
      */
-    protected function isCreatorOf(Model $model)
+    public function isCreatorOf(Model $model)
     {
-        return $user->getKey() === $model->user_id;
+        return $this->getKey() === $model->user_id;
     }
 }
