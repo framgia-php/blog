@@ -39,7 +39,7 @@ $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
     return [
-        'title' => $title = $faker->text(30),
+        'title' => $title = $faker->text(10),
         'slug' => Str::slug($title),
     ];
 });
