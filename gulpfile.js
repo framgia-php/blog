@@ -11,8 +11,8 @@ elixir(mix => {
      * All admin assets tasks.
      */
     mix.copy(BOWERS_PATH + 'Ionicons-2.0.1/png', 'public/png');
-
     mix.copy(BOWERS_PATH + 'AdminLTE-2.3.11/dist/img', 'public/img');
+    mix.copy(BOWERS_PATH + 'summernote-0.8.3/dist', 'public/plugins/editors/summernote');
 
     mix.copy([
         BOWERS_PATH + 'bootstrap/fonts',
@@ -26,6 +26,8 @@ elixir(mix => {
         STYLES_PATH + 'bowers/AdminLTE-2.3.11/bootstrap/css/bootstrap.min.css',
         STYLES_PATH + 'bowers/font-awesome-4.5.0/css/font-awesome.min.css',
         STYLES_PATH + 'bowers/Ionicons-2.0.1/css/ionicons.min.css',
+        STYLES_PATH + 'bowers/AdminLTE-2.3.11/plugins/select2/select2.min.css',
+        STYLES_PATH + 'bowers/toastr-2.1.3/toastr.min.css',
         STYLES_PATH + 'bowers/AdminLTE-2.3.11/dist/css/AdminLTE.min.css',
         STYLES_PATH + 'bowers/AdminLTE-2.3.11/dist/css/skins/_all-skins.min.css',
         BASE_PATH_FROM_ASSETS + 'public/css/admin_styles_scss.css'
@@ -37,7 +39,11 @@ elixir(mix => {
         SCRIPTS_PATH + 'bowers/AdminLTE-2.3.11/plugins/slimScroll/jquery.slimscroll.min.js',
         SCRIPTS_PATH + 'bowers/AdminLTE-2.3.11/plugins/fastclick/fastclick.js',
         SCRIPTS_PATH + 'bowers/AdminLTE-2.3.11/dist/js/app.min.js',
-        SCRIPTS_PATH + 'bowers/AdminLTE-2.3.11/dist/js/demo.js'
+        SCRIPTS_PATH + 'bowers/AdminLTE-2.3.11/dist/js/demo.js',
+        SCRIPTS_PATH + 'bowers/AdminLTE-2.3.11/plugins/select2/select2.min.js',
+        SCRIPTS_PATH + 'bowers/toastr-2.1.3/toastr.min.js',
+        'admin/bootstrap.js',
+        'admin/common.js'
     ], 'public/js/admin.min.js');
 
     /**

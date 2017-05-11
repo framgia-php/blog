@@ -62,6 +62,7 @@ return [
     'tags' => 'Tags',
 
     'thead' => [
+        'is_trending' => 'Trending',
         'active' => 'Active',
         'actions' => 'Actions',
         'position' => 'Position',
