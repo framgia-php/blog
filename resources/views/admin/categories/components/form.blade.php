@@ -48,7 +48,7 @@
             {{ trans('view.thead.description') }}
         </label>
         <div class="col-md-8">
-            <textarea name="name" class="form-control" rows="8"></textarea>
+            {{ Form::textarea('description', null, ['class' => 'form-control', 'rows' => 8]) }}
         </div>
     </div>
     <div class="form-group">
