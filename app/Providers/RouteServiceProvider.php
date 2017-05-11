@@ -19,37 +19,38 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
+     * The models namespace
+     *
+     * @var string
+     */
+    protected $modelsNamespace = 'App\Models';
+
+    /**
+     * The route that should be binded with model.
+     *
+     * @var array
+     */
+    protected $modelsBinding = [
+        'role' => 'Role',
+        'permission' => 'Permission',
+        'user' => 'User',
+        'tag' => 'Tag',
+        'category' => 'Category',
+        'comment' => 'Comment',
+    ];
+
+    /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @return void
      */
     public function boot()
     {
-        Route::bind('role', \App\Models\Role::class);
-        Route::bind('permission', \App\Models\Permission::class);
-        Route::bind('user', \App\Models\User::class);
-        // Route::bind('post', \App\Models\Post::class);
-        Route::bind('tag', \App\Models\Tag::class);
-        Route::bind('category', \App\Models\Category::class);
-        Route::bind('comment', function ($comment) {
-            return \App\Models\Comment::findOrFail($comment);
-        });
-        // Route::bind('category', \App\Models\Category::class);
-        Route::bind('comment', \App\Models\Comment::class);
+        $this->bindModels();
 
-        Route::bind('username', function ($username) {
-            return app(UsersRepository::class)->findUsernameOrFail($username);
-        });
+        $this->bindUsername();
 
-        Route::bind('post_slug', function ($slug) {
-            $user = request()->route('username');
-
-            $query = $user instanceof \App\Models\User
-                ? $user->posts()
-                : \App\Models\Post::query();
-
-            return $query->where('slug', $slug)->firstOrFail();
-        });
+        $this->bindPostSlug();
 
         parent::boot();
     }
@@ -95,5 +96,52 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * Bind model into the specific route uri.
+     *
+     * @param  datatype  varname
+     * @return void
+     */
+    protected function bindModels()
+    {
+        foreach ($this->modelsBinding as $routeName => $modelName) {
+            $modelName = $this->modelsNamespace . '\\' . $modelName;
+
+            Route::bind($routeName, function ($id) use ($modelName) {
+                return app($modelName)->findOrFail($id);
+            });
+        }
+    }
+
+    /**
+     * Bind username with User model.
+     *
+     * @return void
+     */
+    protected function bindUsername()
+    {
+        Route::bind('username', function ($username) {
+            return app(UsersRepository::class)->findUsernameOrFail($username);
+        });
+    }
+
+    /**
+     * Bind post_slug with Post model.
+     *
+     * @return void
+     */
+    protected function bindPostSlug()
+    {
+        Route::bind('post_slug', function ($slug) {
+            $user = request()->route('username');
+
+            $query = $user instanceof \App\Models\User
+                ? $user->posts()
+                : \App\Models\Post::query();
+
+            return $query->active()->where('slug', $slug)->firstOrFail();
+        });
     }
 }

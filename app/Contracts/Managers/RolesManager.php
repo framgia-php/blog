@@ -3,7 +3,7 @@
 namespace App\Contracts\Managers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\RoleRequest;
+use App\Http\Requests\RoleRequest;
 
 interface RolesManager
 {
