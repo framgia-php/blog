@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use App\Contracts\Repositories\RolesRepository;
 use App\Contracts\Repositories\PermissionsRepository;
 use App\Contracts\Managers\RolesManager as ResourceManager;
-use App\Http\Requests\Admin\RoleRequest;
+use App\Http\Requests\RoleRequest;
 
 class RolesManager extends Manager implements ResourceManager
 {
@@ -72,16 +72,18 @@ class RolesManager extends Manager implements ResourceManager
     /**
      * Create a new role resource..
      *
-     * @param  \App\Http\Requests\Admin\RoleRequest  $request
+     * @param  \App\Http\Requests\RoleRequest  $request
      * @return \Illuminate\View\View
      */
     public function createNewRole(RoleRequest $request)
     {
-        $attributes = $request->all();
+        $attributes['label'] = $label = $request->input('label');
+        $attributes['name'] = Str::slug($label, '.');
+        $attributes['description'] = $request->input('description');
+        $attributes['editable'] = true;
+        $attributes['deleteable'] = true;
 
-        $attributes['name'] = Str::slug($request->get('title'));
-
-        $permissionIds = $request->get('permission_ids');
+        $permissionIds = $request->input('permission_ids', []);
 
         try {
             $this->rolesRepository->storeWithPermissions($attributes, $permissionIds);
@@ -90,7 +92,7 @@ class RolesManager extends Manager implements ResourceManager
         } catch (Exception $e) {
             logger()->error($e);
             $renderData['status'] = 'failure';
-            $renderData['message'] = trans('message.failure.create_role');
+            $renderData['error'] = trans('message.failure.create_role');
         }
 
         return $renderData;
