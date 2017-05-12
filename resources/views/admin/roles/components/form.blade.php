@@ -18,7 +18,7 @@
                     {{ Form::text('label', null, [
                         'id' => 'label',
                         'class' => 'form-control',
-                        'placeholder' => trans('view.placeholder.role_label'),
+                        'placeholder' => trans('view.thead.role_label'),
                     ]) }}
                     <span class="help-block">{{ $errors->first('label') }}</span>
                 </div>
@@ -32,7 +32,7 @@
                     {{ Form::textarea('description', null, [
                         'id' => 'description',
                         'class' => 'form-control',
-                        'placeholder' => trans('view.placeholder.description'),
+                        'placeholder' => trans('view.thead.description'),
                     ]) }}
                     <span class="help-block">{{ $errors->first('description') }}</span>
                 </div>
@@ -42,9 +42,16 @@
 
     <div class="box-footer">
         <div class="text-right">
-            <a href="{{ route('admin.roles.index') }}" title="{{ trans('view.canel') }}">
+            <a href="{{ route('admin.roles.index') }}" title="{{ trans('view.cancel') }}" class="btn btn-default">
                 {{ trans('view.cancel') }}
             </a>
+            @if (isset($role) && $role->deleteable && Auth::user()->can('delete', $role))
+                <a href="{{ route('admin.roles.destroy', $role) }}"
+                    class="btn btn-danger btn-delete-resource"
+                    confirm-message="{{ trans('message.confirm_role_delete') }}">
+                    {{ trans('view.delete') }}
+                </a>
+            @endif
             <button type="submit" class="btn btn-success" title="{{ trans('view.save') }}">
                 {{ trans('view.save') }}
             </button>

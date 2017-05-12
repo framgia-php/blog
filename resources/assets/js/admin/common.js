@@ -25,6 +25,9 @@ $(document).ready(function () {
                     toastr.success(response.message);
 
                     setTimeout(function () {
+                        if (response.redirect !== undefined) {
+                            window.location.href = response.redirect;
+                        }
                         window.location.reload();
                     }, 1000);
                 })

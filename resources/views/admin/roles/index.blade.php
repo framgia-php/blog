@@ -1,5 +1,7 @@
 @extends('admin.master')
 
+@section('title', trans('view.roles_view'))
+
 @section('heading')
 <section class="content-header">
     <h1>
@@ -21,7 +23,7 @@
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">
-                {{ trans('view.roles_create') }}
+                {{ trans('view.roles_view') }}
             </h3>
 
             <div class="box-tools pull-right">
@@ -41,7 +43,7 @@
                         <div class="text-right">
                             <a href="{{ route('admin.roles.create') }}"
                                 title="{{ trans('view.new_role') }}"
-                                class="btn btn-default">
+                                class="btn btn-default btn-sm">
                                 {{ trans('view.new_role') }}
                             </a>
                         </div>

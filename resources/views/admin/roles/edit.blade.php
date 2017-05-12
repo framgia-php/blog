@@ -8,7 +8,7 @@
 <section class="content-header">
     <h1>
         {{ trans('view.roles_management') }}
-        <small>{{ trans('view.roles_create') }}</small>
+        <small>{{ trans('view.roles_edit') }}</small>
     </h1>
     <ol class="breadcrumb">
         <li>
@@ -22,10 +22,10 @@
 
 @section('content')
 <section class="content">
-    {{ Form::open(['route' => 'admin.roles.store']) }}
+    {{ Form::model($role, ['route' => ['admin.roles.update', $role], 'method' => 'put']) }}
         <div class="row">
             <div class="col-md-8">
-                @include('admin.roles.components.form')
+                @include('admin.roles.components.form', ['role' => $role])
             </div>
 
             <div class="col-md-4">
