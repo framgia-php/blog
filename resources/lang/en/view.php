@@ -66,6 +66,11 @@ return [
     'follow' => 'Fllow',
     'trending_posts' => 'Trending Posts',
     'tags' => 'Tags',
+    'latest_posts' => 'Latest Posts',
+    'search_for_keyword' => 'Search :type for keyword',
+    'summary' => 'Summary',
+    'posts' => 'Posts',
+    'authors' => 'Authors',
 
     'thead' => [
         'is_trending' => 'Trending',

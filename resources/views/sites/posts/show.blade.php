@@ -1,13 +1,5 @@
 @extends('sites.master')
 
-@push('styles')
-<style>
-    .sidebar-section-author .author-avatar {
-        margin: auto;
-    }
-</style>
-@endpush
-
 @section('content')
 <div id="main">
     <div class="container">
@@ -18,7 +10,7 @@
                         {{ $post->title }}
                     </h1>
                     <ul class="list-inline tags">
-                        @foreach($post->tags as $tag)
+                        @foreach ($post->tags as $tag)
                             <li>
                                 <a href="javascript:void(0)" class="label label-info">
                                     {{ $tag->title }}
@@ -43,7 +35,7 @@
                         </div>
                     </div>
                     <div class="summary">
-                        <h2 class="summary-title">{{ trans('views.summary') }}</h2>
+                        <h2 class="summary-title">{{ trans('view.summary') }}</h2>
                         <p class="summary-text">{!! $post->summary !!}</p>
                     </div>
                     <div class="content">
@@ -60,7 +52,7 @@
             </div>
 
             <div class="col-md-4">
-                <div class="sidebar">
+                <div id="sidebar" class="sidebar">
                     <div class="sidebar-section">
                         <h3 class="sidebar-section-title text-center">
                             {{ trans('view.author') }}
@@ -81,7 +73,7 @@
                                         {{ $user->posts()->count() }}
                                     </a>
                                 </li>
-                                @if(Auth::id() !== $user->getKey())
+                                @if (Auth::id() !== $user->getKey())
                                     <li class="text-center">
                                         {{ Form::open(['route' => ['sites.users.follow', Auth::id(), $user->getKey() ]]) }}
                                             <button type="submit" class="btn btn-default">
@@ -94,11 +86,11 @@
                         </div>
                     </div>
 
-                    @if($trendingPosts->isNotEmpty())
+                    @if ($trendingPosts->isNotEmpty())
                         <div class="sidebar-section">
                             <h3 class="sidebar-section-title">{{ trans('view.trending_posts') }}</h3>
                             <div class="sidebar-section-posts">
-                                @foreach($trendingPosts as $post)
+                                @foreach ($trendingPosts as $post)
                                     <div class="post" style="margin-bottom: 30px;">
                                         <h4 class="post-info-title">
                                             <a href="{{ route('sites.posts.show', [$post->creator->username, $post->slug]) }}">{{ $post->title }}</a>
@@ -108,7 +100,7 @@
                                                 {{ $post->creator->fullname }}
                                             </a>
                                             <span>&nbsp;&nbsp;&nbsp;</span>
-                                            <span>{{ $post->published_at }}</span>
+                                            <span>{{ $post->sites_published_at }}</span>
                                             <span>&nbsp;&nbsp;&nbsp;</span>
                                             <span>
                                                 <i class="fa fa-comment-o"></i>
@@ -121,11 +113,11 @@
                         </div>
                     @endif
 
-                    @if($tags->isNotEmpty())
+                    @if ($tags->isNotEmpty())
                         <div class="sidebar-section">
                             <h3 class="sidebar-section-title">{{ trans('view.tags') }}</h3>
                             <div class="sidebar-section-tags">
-                                @foreach($tags as $tag)
+                                @foreach ($tags as $tag)
                                     <div class="btn-group tag">
                                         <a href="{{ route('sites.tags.show', [$tag->slug]) }}" class="btn btn-default btn-sm">
                                             {{ $tag->title }}
