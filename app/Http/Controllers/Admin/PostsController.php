@@ -152,7 +152,7 @@ class PostsController extends Controller
     protected function getFormatAttributes(PostRequest $request)
     {
         $attributes['title'] = $title = $request->input('title');
-        $attributes['slug'] = Str::slug($title);
+        $attributes['slug'] = Str::slug($title) . '-' . time();
         $attributes['active'] = boolval($request->input('active', true));
         $attributes['is_trending'] = boolval($request->input('is_trending', false));
         $attributes['category_id'] = $request->input('category_id');

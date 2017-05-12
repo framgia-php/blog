@@ -27,8 +27,9 @@ $(document).ready(function () {
                     setTimeout(function () {
                         if (response.redirect !== undefined) {
                             window.location.href = response.redirect;
+                        } else {
+                            window.location.reload();    
                         }
-                        window.location.reload();
                     }, 1000);
                 })
                 .fail(function (response) {
