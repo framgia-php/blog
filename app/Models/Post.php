@@ -56,4 +56,9 @@ class Post extends Model
     {
         return $query->where('is_trending', config('setup.post_is_trending'));
     }
+
+    public function getSitesPublishedAtAttribute()
+    {
+        return date('F d, Y', strtotime($this->published_at));
+    }
 }

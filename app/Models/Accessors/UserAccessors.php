@@ -2,6 +2,8 @@
 
 namespace App\Models\Accessors;
 
+use Illuminate\Support\Facades\File;
+
 trait UserAccessors
 {
     /**
@@ -62,7 +64,9 @@ trait UserAccessors
      */
     public function getAvatarPathAttribute()
     {
-        return config('setup.users_avatars_path') . $this->avatar;
+        $path = config('setup.users_avatars_path') . $this->avatar;
+
+        return File::exists($path) ? $path : config('setup.default_avatar');
     }
 
     /**
