@@ -43,3 +43,14 @@ $factory->define(App\Models\Tag::class, function (Faker\Generator $faker) {
         'slug' => Str::slug($title),
     ];
 });
+
+$factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $title = $faker->text(50),
+        'slug' => Str::slug($title),
+        'summary' => $faker->paragraph,
+        'content' => $faker->text(500),
+        'active' => rand(0, 1),
+        'is_trending' => rand(0, 1),
+    ];
+});
