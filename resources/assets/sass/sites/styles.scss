@@ -87,6 +87,18 @@ body {
 
 /* #sidebar -----------------------------------------------------------------*/
 #sidebar {
+    .sidebar-section {
+        .sidebar-section-author .author-avatar {
+            margin: auto;
+        }
+
+        .sidebar-section-tags {
+            .tag {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
     .section {
         .section-title {
             border-bottom: 1px solid $primary-grey-color;
@@ -242,18 +254,6 @@ body {
 .posts-list {
     float: left;
     width: 100%;
-
-    .pagination {
-        a {
-            padding: 10px 18px;
-            margin-left: 3px;
-            border-width: 2px;
-        }
-
-        .active > a {
-            background: $primary-color;
-        }
-    }
 
     .post {
         float: left;

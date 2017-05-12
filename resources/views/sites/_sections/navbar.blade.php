@@ -14,23 +14,23 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active">
-                    <a href="#">
-                        Posts
+                <li class="{{ Route::currentRouteName() === 'sites.posts.index' ? 'active' : '' }}">
+                    <a href="{{ route('sites.posts.index') }}" title="{{ trans('view.posts') }}">
+                        {{ trans('view.posts') }}
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        Authors
+                <li class="{{ Route::currentRouteName() === 'sites.users.index' ? 'active' : '' }}">
+                    <a href="{{ route('sites.users.index') }}" title="{{ trans('view.authors') }}">
+                        {{ trans('view.authors') }}
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        Tags
+                <li class="{{ Route::currentRouteName() === 'sites.tags.index' ? 'active' : '' }}">
+                    <a href="{{ route('sites.tags.index') }}" title="{{ trans('view.tags') }}">
+                        {{ trans('view.tags') }}
                     </a>
                 </li>
                 <li class="dropdown notifications">
-                    <a href="#" class="dropdown-toggle text-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a href="javascript:void(0)" class="dropdown-toggle text-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="fa fa-globe"></span>
                         <span class="badge">5</span>
                     </a>
@@ -51,10 +51,17 @@
                     </li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             {{ Html::image(Auth::user()->avatar_path, Auth::user()->fullname, ['class' => 'user-avatar']) }}
                         </a>
                         <ul class="dropdown-menu">
+                            @if (Auth::user()->canAccessAdminPages())
+                                <li>
+                                    <a href="{{ route('admin.dashboard.index') }}" title="{{ trans('view.dashboard') }}">
+                                        {{ trans('view.dashboard') }}
+                                    </a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="{{ route('sites.users.show', Auth::user()->username) }}" title="{{ trans('view.profile') }}">
                                     {{ trans('view.profile') }}

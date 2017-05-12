@@ -73,6 +73,8 @@ elixir(mix => {
         'sites/comments.js'
     ], 'public/js/sites.min.js');
 
+    mix.copy('resources/assets/img', 'public/img');
+
     /**
      * Copy asset in root public into public/build during development time.
      */

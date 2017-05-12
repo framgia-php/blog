@@ -5,39 +5,41 @@
         <div class="container">
             <div class="page-heading">
                 <h1 class="page-header">
-                    {{ trans('view.latest_posts') }}
+                    @if (request()->has('keyword'))
+                        {{ trans('view.search_for_keyword', ['type' => trans('view.' . request()->query('find_by'))]) }}
+                        <span>:</span>
+                        {{ request()->query('keyword') }}
+                    @else
+                        {{ trans('view.latest_posts') }}
+                    @endif
                 </h1>
             </div>
             <div class="row">
                 <div class="col-md-9">
+                    <form action="{{ route('sites.posts.index') }}" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                {{ Form::select('find_by', config('setup.find_posts_by'), request()->query('find_by'), ['class' => 'form-control']) }}
+                            </div>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="keyword" value="{{ request('keyword') }}"/>
+                                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <div class="posts-list">
-                        @each('sites.posts.components.post', $latestPosts, 'post')
+                        @each('sites.posts.components.post', $posts, 'post')
 
                         <div class="text-center">
-                            {{ $latestPosts->appends(request()->all())->links() }}
+                            {{ $posts->appends(request()->all())->links() }}
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div id="sidebar">
-                        <div class="section">
-                            <h3 class="section-title">
-                                {{ trans('view.search') }}
-                            </h3>
-                            <div class="section-content">
-                                <div class="search">
-                                    <form action="{{ route('sites.posts.index') }}">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" name="keyword" value="{{ request('keyword') }}"/>
-                                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                         <div class="section">
                             <h3 class="section-title">
                                 {{ trans('view.trending_posts') }}
