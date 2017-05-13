@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="text-right">
-                            <a href="#" class="btn btn-default">
+                            <a href="{{ route('admin.tags.create') }}" class="btn btn-default btn-sm">
                                 {{ trans('view.new_tag') }}
                             </a>
                         </div>
@@ -67,7 +67,7 @@
 
                     <tbody>
                         @empty($tags->all())
-                            @include('admin._components.empty_rows', ['columns' => 4])
+                            @include('admin._components.empty_rows', ['columns' => 6])
                         @else
                             @each('admin.tags.components.tag', $tags, 'tag')
                         @endempty
