@@ -4,6 +4,7 @@ return [
 
     'confirm_post_delete' => 'Are you sure to delete this post?',
     'confirm_role_delete' => 'Are you sure to delete this role?',
+    'confirm_user_delete' => 'Are you sure to delete this user?',
 
     /*
      * Define all application success messages.
