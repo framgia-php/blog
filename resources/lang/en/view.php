@@ -71,6 +71,10 @@ return [
     'summary' => 'Summary',
     'posts' => 'Posts',
     'authors' => 'Authors',
+    'password' => 'Password',
+    'password_confirmation' => 'Password Retype',
+    'user_type' => 'User Type',
+    'choose_roles' => 'Choose Roles',
 
     'thead' => [
         'is_trending' => 'Trending',
@@ -93,6 +97,8 @@ return [
         'avatar' => 'Avatar',
         'role_label' => 'Role Label',
         'description' => 'Description',
+        'user_type' => 'User Type',
+        'username' => 'Username',
     ],
 
     'placeholder' => [
@@ -102,5 +108,6 @@ return [
         'fullname' => 'Fullname',
         'avatar' => 'Avatar',
         'title' => 'Title',
+        'password_confirmation' => 'Password Retype', 
     ],
 ];

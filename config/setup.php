@@ -14,11 +14,17 @@ return [
     'home_trending_posts_limit' => 5,
     'home_tags_limit' => 10,
     'default_avatar' => 'img/default-avatar.jpg',
+    'default_avatar_filename' => 'default-avatar.jpg',
     
     'find_posts_by' => [
         'author' => 'Author',
         'title' => 'Title',
         'tags' => 'Tags',
+    ],
+    
+    'user_types' => [
+        1 => 'admin',
+        2 => 'member'
     ],
 
     'commentable_types' => [

@@ -37,7 +37,7 @@ class UsersRepository extends EloquentRepository implements BaseRepository, Reso
      */
     public function listing(Request $request)
     {
-        $query = $this->newQuery();
+        $query = $this->newQuery()->where('id', '<>', $request->user()->id);
 
         $this->buildFilterQuery($query, $request);
 

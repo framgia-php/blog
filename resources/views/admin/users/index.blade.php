@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="text-right">
-                            <a href="#" class="btn btn-default">
+                            <a href="{{ route('admin.users.create') }}" class="btn btn-default btn-sm">
                                 {{ trans('view.new_user') }}
                             </a>
                         </div>
@@ -58,15 +58,17 @@
                         <tr class="active">
                             <th class="text-center">#</th>
                             <th>{{ trans('view.thead.fullname') }}</th>
+                            <th>{{ trans('view.thead.username') }}</th>
                             <th>{{ trans('view.thead.email') }}</th>
                             <th class="text-center">{{ trans('view.thead.active') }}</th>
+                            <th class="text-center">{{ trans('view.thead.user_type') }}</th>
                             <th class="text-center">{{ trans('view.thead.actions') }}</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         @empty($users->all())
-                            @include('admin._components.empty_rows', ['columns' => 5])
+                            @include('admin._components.empty_rows', ['columns' => 7])
                         @else
                             @each('admin.users.components.user', $users, 'user')
                         @endempty
