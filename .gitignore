@@ -10,6 +10,18 @@ bootstrap/cache/
 .env.*.php
 .env.php
 .env
+composer.lock
+/public/build
+/public/css
+/public/fonts
+/public/img
+/public/js
+/public/png
+/public/uploads
+/public/plugins
+/public/mix-manifest.json
+/resources/assets/bowers
+/resources/assets/css/*_scss.*
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/

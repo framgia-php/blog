@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Providers;
+
+use App\Support\ContractsServiceProvider as ServiceProvider;
+
+class ManagersServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerManager('AuthManager');
+        $this->registerManager('RolesManager');
+        $this->registerManager('CategoriesManager');
+        $this->registerManager('TagsManager');
+        $this->registerManager('UsersManager');
+        $this->registerManager('PostsManager');
+    }
+
+    /**
+     * Register a repository contract binding.
+     *
+     * @param  string  $contract
+     * @param  string  $implementation
+     * @return void
+     */
+    protected function registerManager($name)
+    {
+        $this->app->singleton(
+            $this->resolveFullContractName($name, 'Managers'),
+            $this->resolveFullImplementationName($name, 'Managers')
+        );
+    }
+}
